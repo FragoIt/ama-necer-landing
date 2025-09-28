@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 export const CallToAction = () => {
   const handleWhatsAppClick = () => {
     const message = "Hola, quiero agendar mi sesión espiritual con Ama Necer Mamboretá";
-    const whatsappUrl = `https://wa.me/573XXXXXXXXX?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/573006514386?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 

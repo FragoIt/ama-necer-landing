@@ -10,7 +10,7 @@ const benefits = [
 
 export const Benefits = () => {
   return (
-    <section className="py-20 px-6 bg-gradient-nature">
+    <section id="benefits" className="py-20 px-6 bg-gradient-nature">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="font-serif text-4xl md:text-5xl font-bold text-white mb-6">
           Beneficios y transformaciones
@@ -42,6 +42,6 @@ export const Benefits = () => {
           </div>
         </div>
       </div>
-    </section>
+  </section>
   );
 };

@@ -1,49 +1,20 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 
 export const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    contact: "",
-    message: ""
-  });
-  const { toast } = useToast();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!formData.name || !formData.contact || !formData.message) {
-      toast({
-        title: "Campos requeridos",
-        description: "Por favor completa todos los campos del formulario.",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    // Here you would normally send the form data to your backend
-    toast({
-      title: "Mensaje enviado",
-      description: "Gracias por contactarnos. Te responderemos pronto.",
-    });
-
-    // Reset form
-    setFormData({ name: "", contact: "", message: "" });
+  const handleWhatsApp = () => {
+    const message = "Hola, me interesa conocer más sobre sus servicios";
+    const whatsappUrl = `https://wa.me/573006514386?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
   };
 
-  const handleWhatsAppClick = () => {
-    const message = `Hola, soy ${formData.name}. ${formData.message}`;
-    const whatsappUrl = `https://wa.me/573XXXXXXXXX?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+  const handleEmail = () => {
+    window.location.href = `mailto:amanecermamboreta@gmail.com?subject=${encodeURIComponent("Contacto desde la web")}`;
   };
 
   return (
-    <section className="py-20 px-6 bg-cream">
+    <section id="contact" className="py-16 bg-gradient-to-b from-green-50 to-white text-center">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
@@ -54,82 +25,16 @@ export const Contact = () => {
             Estamos aquí para acompañarte en tu proceso de transformación
           </p>
         </div>
-        
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <Card className="border-0 shadow-soft bg-white">
-            <CardContent className="p-8">
-              <h3 className="font-serif text-2xl font-semibold text-earth-dark mb-6">
-                Envíanos un mensaje
-              </h3>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-earth font-medium mb-2">
-                    Nombre *
-                  </label>
-                  <Input
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    placeholder="Tu nombre completo"
-                    className="border-stone/30 focus:border-earth focus:ring-earth"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-earth font-medium mb-2">
-                    Email o WhatsApp *
-                  </label>
-                  <Input
-                    value={formData.contact}
-                    onChange={(e) => setFormData({...formData, contact: e.target.value})}
-                    placeholder="tu@email.com o +57 300 123 4567"
-                    className="border-stone/30 focus:border-earth focus:ring-earth"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-earth font-medium mb-2">
-                    Mensaje *
-                  </label>
-                  <Textarea
-                    value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    placeholder="Cuéntanos qué servicio te interesa y cualquier pregunta que tengas..."
-                    className="border-stone/30 focus:border-earth focus:ring-earth h-32"
-                  />
-                </div>
-                
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button 
-                    type="submit"
-                    className="bg-earth hover:bg-earth-dark text-cream flex-1"
-                  >
-                    Enviar mensaje
-                  </Button>
-                  
-                  <Button 
-                    type="button"
-                    variant="outline"
-                    onClick={handleWhatsAppClick}
-                    disabled={!formData.name || !formData.message}
-                    className="border-forest text-forest hover:bg-forest hover:text-cream flex-1"
-                  >
-                    Enviar por WhatsApp
-                  </Button>
-                </div>
-              </form>
-            </CardContent>
-          </Card>
-          
+
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Contact Info */}
           <div className="space-y-8">
             <Card className="border-0 shadow-soft bg-white">
-              <CardContent className="p-8">
+              <CardContent className="p-8 text-left">
                 <h3 className="font-serif text-2xl font-semibold text-earth-dark mb-6">
                   Información de contacto
                 </h3>
-                
+
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <MapPin className="w-6 h-6 text-earth-light mt-1 flex-shrink-0" />
@@ -138,15 +43,15 @@ export const Contact = () => {
                       <p className="text-earth">Sopetrán, Antioquia, Colombia</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start space-x-4">
                     <Phone className="w-6 h-6 text-earth-light mt-1 flex-shrink-0" />
                     <div>
                       <p className="font-medium text-earth-dark">WhatsApp</p>
-                      <p className="text-earth">+57 XXX XXX XXXX</p>
+                      <p className="text-earth">+57 300 651 4386</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start space-x-4">
                     <Mail className="w-6 h-6 text-earth-light mt-1 flex-shrink-0" />
                     <div>
@@ -154,7 +59,7 @@ export const Contact = () => {
                       <p className="text-earth">amanecermamboreta@gmail.com</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start space-x-4">
                     <Clock className="w-6 h-6 text-earth-light mt-1 flex-shrink-0" />
                     <div>
@@ -163,26 +68,42 @@ export const Contact = () => {
                     </div>
                   </div>
                 </div>
+
+                <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                  <Button onClick={handleWhatsApp} className="bg-earth hover:bg-earth-dark text-cream flex-1">
+                    Contactar por WhatsApp
+                  </Button>
+                  <Button variant="outline" onClick={handleEmail} className="flex-1">
+                    Enviar email
+                  </Button>
+                </div>
               </CardContent>
             </Card>
-            
-            {/* Map placeholder */}
+
+            {/* Map card kept below if needed on mobile */}
             <Card className="border-0 shadow-soft bg-white">
               <CardContent className="p-8">
                 <h3 className="font-serif text-2xl font-semibold text-earth-dark mb-6">
                   Nuestra ubicación
                 </h3>
-                
-                <div className="bg-gradient-nature rounded-lg h-64 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <MapPin className="w-12 h-12 mx-auto mb-4 opacity-80" />
-                    <p className="text-lg font-medium">Sopetrán, Antioquia</p>
-                    <p className="text-sm opacity-90">Un lugar mágico rodeado de naturaleza</p>
-                  </div>
+
+                <div className="rounded-lg overflow-hidden h-[350px] w-full">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26664.585998985352!2d-75.84605976221525!3d6.557668342150933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e45b6178773f595%3A0xd7ed128a0342e322!2sSanta%20F%C3%A9%20de%20Antioquia%2C%20Antioquia!5e0!3m2!1ses!2sco!4v1758234311617!5m2!1ses!2sco"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="rounded-lg"
+                  />
                 </div>
               </CardContent>
             </Card>
           </div>
+
+          {/* Empty right column removed (map is included above) */}
         </div>
       </div>
     </section>

@@ -1,9 +1,9 @@
 import { Card } from "@/components/ui/card";
-import guidesImage from "@/assets/spiritual-guides.jpg";
+import guidesImage from "@/assets/selene_mission.jpeg";
 
 export const Mission = () => {
   return (
-    <section className="py-20 px-6 bg-cream">
+  <section id="mission" className="py-20 px-6 bg-cream">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
@@ -14,7 +14,7 @@ export const Mission = () => {
               </h2>
               
               <p className="text-lg text-earth leading-relaxed">
-                En <span className="font-semibold text-earth-dark">Ama Necer Mamboretá</span> creemos que cada ser humano guarda en su interior una chispa divina. Nuestra misión es acompañarte a encenderla, guiándote en un viaje de reconexión con tu cuerpo, tu mente y tu espíritu.
+                En <span className="font-semibold text-earth-dark">Amaecer Mamboretá</span> creemos que cada ser humano guarda en su interior una chispa divina. Nuestra misión es acompañarte a encenderla, guiándote en un viaje de reconexión con tu cuerpo, tu mente y tu espíritu.
               </p>
               
               <p className="text-lg text-earth leading-relaxed mt-6">
@@ -24,7 +24,7 @@ export const Mission = () => {
             
             <div className="flex items-center space-x-4">
               <div className="w-12 h-0.5 bg-gradient-sacred"></div>
-              <span className="text-gold font-medium">Espacios sagrados en Sopetrán</span>
+              <span className="text-gold font-medium">Espacios sagrados en santa fe de Antioquia</span>
             </div>
           </div>
           
@@ -44,6 +44,6 @@ export const Mission = () => {
           </div>
         </div>
       </div>
-    </section>
+  </section>
   );
 };
